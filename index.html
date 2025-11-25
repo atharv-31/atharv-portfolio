@@ -8,8 +8,8 @@
     :root {
       --primary-color: #314e89;
       --accent-color: #09c3db;
-      --background: #f7fafd;
       --card-bg: #fff;
+      --overlay: rgba(34, 46, 71, 0.64);
       --text-dark: #232323;
       --text-light: #fff;
     }
@@ -20,9 +20,31 @@
       font-family: 'Segoe UI', Arial, sans-serif;
     }
     body {
-      background: var(--background);
+      min-height: 100vh;
       color: var(--text-dark);
       line-height: 1.7;
+      background: url('YOUR_IMAGE_LINK_HERE') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+    /* Optional: a dark overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--overlay);
+      z-index: 0;
+      pointer-events: none;
+    }
+    #page-content {
+      position: relative;
+      z-index: 1;
+    }
+    header, section, footer {
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
     }
     header {
       background: var(--primary-color);
@@ -30,6 +52,7 @@
       padding: 24px 0;
       text-align: center;
       box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+      border-radius: 0 0 10px 10px;
     }
     header h1 {
       font-size: 2.8rem;
@@ -53,7 +76,7 @@
     section {
       padding: 56px 18px 32px 18px;
       max-width: 950px;
-      margin: auto;
+      margin: 32px auto;
     }
     h2 {
       margin-bottom: 30px;
@@ -120,81 +143,86 @@
       margin-top: 40px;
       font-size: 1rem;
       letter-spacing: 1px;
+      border-radius: 10px 10px 0 0;
+    }
+    @media (max-width: 700px) {
+      .skills, .projects { flex-direction: column; }
+      section { padding: 24px 6px 20px 6px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Atharv Jagdale</h1>
-    <p>Java & Full Stack Developer | Creating Scalable Web Solutions</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div id="page-content">
+    <header>
+      <h1>Atharv Jagdale</h1>
+      <p>Java & Full Stack Developer | Creating Scalable Web Solutions</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hello! I'm Atharv—a dedicated Java developer with a passion for building scalable, real-world applications using modern full stack technologies. With professional experience transitioning from networking to full stack Java development, I specialize in enterprise-level backend using Spring Boot, Hibernate, and advanced Java features. I thrive on learning and applying technologies like Servlets, JSP, and modern JavaScript frameworks to deliver impactful solutions. I am actively looking for challenging developer roles that drive both organizational and personal growth.
-    </p>
-  </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I'm Atharv—a dedicated Java developer with a passion for building scalable, real-world applications using modern full stack technologies. With professional experience transitioning from networking to full stack Java development, I specialize in enterprise-level backend using Spring Boot, Hibernate, and advanced Java features. I thrive on learning and applying technologies like Servlets, JSP, and modern JavaScript frameworks to deliver impactful solutions. I am actively looking for challenging developer roles that drive both organizational and personal growth.
+      </p>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="card"><strong>Backend:</strong><br>Java (Core & Advanced), Servlets, JSP, Hibernate</div>
-      <div class="card"><strong>Frontend:</strong><br>JavaScript, HTML5, CSS3, React (Basics)</div>
-      <div class="card"><strong>Database:</strong><br>MySQL</div>
-      <div class="card"><strong>Tools & Practices:</strong><br>Git, GitHub, REST APIs,Tom</div>
-      <div class="card"><strong>Other:</strong><br>Networking, SDLC Fundamentals</div>
-    </div>
-  </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="card"><strong>Backend:</strong><br>Java (Core & Advanced), Servlets, JSP, Hibernate</div>
+        <div class="card"><strong>Frontend:</strong><br>JavaScript, HTML5, CSS3, React (Basics)</div>
+        <div class="card"><strong>Database:</strong><br>MySQL</div>
+        <div class="card"><strong>Tools & Practices:</strong><br>Git, GitHub, REST APIs, Tomcat</div>
+        <div class="card"><strong>Other:</strong><br>Networking, SDLC Fundamentals</div>
+      </div>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>Student Application</h3>
-        <ul>
-          <li>Developed a web-based student management system using Java, Servlets, JSP, and MySQL.</li>
-          <li>Features include student registration, course enrollment, and result tracking.</li>
-         <li>Deployed and tested the application on Apache Tomcat Server.</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/atharv-31/StudentApp" target="_blank">GitHub Repository</a>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card">
+          <h3>Student Application</h3>
+          <ul>
+            <li>Developed a web-based student management system using Java, Servlets, JSP, and MySQL.</li>
+            <li>Features include student registration, course enrollment, and result tracking.</li>
+            <li>Deployed and tested the application on Apache Tomcat Server.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/atharv-31/StudentApp" target="_blank">GitHub Repository</a>
+          </div>
+        </div>
+        <div class="card">
+          <h3>EmergencyMedBus</h3>
+          <ul>
+            <li>A logistics app streamlining medical supply distribution for emergency situations.</li>
+            <li>Built with Java, JSP, Servlet, Hibernate, and a modern web frontend.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/atharv-31/EmergencyMedBuss" target="_blank">GitHub Repository</a>
+          </div>
         </div>
       </div>
-      <div class="card">
-        <h3>EmergencyMedBus</h3>
-        <ul>
-          <li>A logistics app streamlining medical supply distribution for emergency situations.</li>
-          <li>Built with Java, JSP, Servlet, Hibernate, and a modern web frontend.</li>
-        </ul>
-        <div class="project-links">
-          <a href="https://github.com/atharv-31/EmergencyMedBuss" target="_blank">GitHub Repository</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <ul class="contact-list">
-      <li>COntact: 7058334220 </li>
-      <li>Email: <a href="atharvjagdale221@gmail.com">atharvjagdale221@gmail.com</a></li>
-      <li>LinkedIn: <a href="www.linkedin.com/in/atharv-jagdale-00aa32221" target="_blank">linkedin.com/atharv</a></li>
-      <li>GitHub: <a href="https://github.com/atharv-31" target="_blank">github.com/atharv</a></li>
-      <li>LeetCode: <a href="https://leetcode.com/u/Atharv_jagdale/" target="_blank">github.com/atharv</a></li>
-    </ul>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>Contact: 7058334220 </li>
+        <li>Email: <a href="mailto:atharvjagdale221@gmail.com">atharvjagdale221@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/atharv-jagdale-00aa32221" target="_blank">linkedin.com/atharv</a></li>
+        <li>GitHub: <a href="https://github.com/atharv-31" target="_blank">github.com/atharv</a></li>
+        <li>LeetCode: <a href="https://leetcode.com/u/Atharv_jagdale/" target="_blank">leetcode.com/u/Atharv_jagdale/</a></li>
+      </ul>
+    </section>
 
-  <footer>
-    &copy; 2025 Atharv | All Rights Reserved
-  </footer>
+    <footer>
+      &copy; 2025 Atharv | All Rights Reserved
+    </footer>
+  </div>
 </body>
 </html>
-
-
